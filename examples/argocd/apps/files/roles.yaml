@@ -1,0 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeflow-roles
+spec:
+  source:
+    repoURL: https://github.com/kubeflow/manifests.git
+    targetRevision: v1.2-branch
+    path: kubeflow-roles/base
+    kustomize:

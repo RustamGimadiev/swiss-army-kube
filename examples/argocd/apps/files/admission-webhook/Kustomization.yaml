@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: kubeflow
+bases:
+- https://github.com/kubeflow/manifests.git/admission-webhook/webhook/base?ref=v1.2-branch
+
+resources:
+- certificate.yaml
+
+patchesStrategicMerge:
+- mutating-webhook-configuration.yaml
+- deployment.yaml
+
+configMapGenerator:
+- name: admission-webhook-parameters
+  behavior: merge
+  envs:
+  - params.env
+generatorOptions:
+  disableNameSuffixHash: true
+
+vars:
+- name: podDefaultsIssuer
+  objref:
+    kind: ConfigMap
+    name: admission-webhook-parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.issuer
+- name: podDefaultsCertName
+  objref:
+      kind: Certificate
+      group: cert-manager.io
+      version: v1alpha2
+      name: admission-webhook-cert
+  fieldref:
+    fieldpath: metadata.name
+
+configurations:
+- params.yaml
