@@ -9,5 +9,5 @@ spec:
   source:
     repoURL: https://github.com/kubeflow/manifests.git
     targetRevision: v1.2-branch
-    path: /common/centraldashboard/base
+    path: common/centraldashboard/base
     kustomize: {}

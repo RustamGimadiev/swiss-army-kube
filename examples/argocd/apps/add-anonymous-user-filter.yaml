@@ -9,5 +9,5 @@ spec:
   source:
     repoURL: https://github.com/kubeflow/manifests.git
     targetRevision: v1.2-branch
-    path: /istio/add-anonymous-user-filter/base
+    path: istio/add-anonymous-user-filter/base
     kustomize: {}
