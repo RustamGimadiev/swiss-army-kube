@@ -1,0 +1,13 @@
+"apiVersion": "argoproj.io/v1alpha1"
+"kind": "Application"
+"metadata":
+  "name": $DIR
+"spec":
+  "destination":
+    "server": "https://kubernetes.default.svc"
+  "project": "default"
+  "source":
+    "kustomize": {}
+    repoURL: 'https://github.com/RustamGimadiev/swiss-army-kube'
+    path: examples/argocd/apps/$DIR
+    targetRevision: feature/kubeflow-native

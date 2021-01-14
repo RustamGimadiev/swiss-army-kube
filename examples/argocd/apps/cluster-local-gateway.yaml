@@ -1,0 +1,13 @@
+"apiVersion": "argoproj.io/v1alpha1"
+"kind": "Application"
+"metadata":
+  "name": cluster-local-gateway
+"spec":
+  "destination":
+    "server": "https://kubernetes.default.svc"
+  "project": "default"
+  "source":
+    "kustomize": {}
+    repoURL: 'https://github.com/RustamGimadiev/swiss-army-kube'
+    path: examples/argocd/apps/cluster-local-gateway
+    targetRevision: feature/kubeflow-native
