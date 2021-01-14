@@ -7,4 +7,4 @@ spec:
     repoURL: https://github.com/kubeflow/manifests.git
     targetRevision: v1.2-branch
     path: /istio/istio/base
-    kustomize:
+    kustomize: {}
