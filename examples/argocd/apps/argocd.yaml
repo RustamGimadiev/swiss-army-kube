@@ -15,12 +15,6 @@
       - "name": "server.rbacConfig.policy\\.csv"
         "value": |
           g, administrators, role:admin
-      - "name": "server.ingress.tls[0].hosts[0]"
-        "value": "argocd.sak.edu.provectus.io"
-      - "name": "server.ingress.hosts[0]"
-        "value": "argocd.sak.edu.provectus.io"
-      - "name": "server.ingress.tls[0].secretName"
-        "value": "argocd-sak.edu.provectus.io-tls"
       - "name": "configs.secret.argocdServerAdminPassword"
         "value": "$2a$10$4FyUI/n/IxTa02faCJYD/uP6W9lKR7jcHHfYOTBweoj/D0s8Sbqoq"
       - "name": "dex.enabled"
@@ -66,7 +60,7 @@
       - "name": "server.extraArgs[0]"
         "value": "--insecure"
       - "name": "server.ingress.enabled"
-        "value": "true"
+        "value": "false"
       - "name": "server.rbacConfig.policy\\.default"
         "value": "role:readonly"
       - "name": "server.service.type"
