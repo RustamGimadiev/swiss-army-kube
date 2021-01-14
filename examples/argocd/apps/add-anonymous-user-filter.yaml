@@ -3,6 +3,9 @@ kind: Application
 metadata:
   name: add-anonymous-user-filter
 spec:
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
   source:
     repoURL: https://github.com/kubeflow/manifests.git
     targetRevision: v1.2-branch
