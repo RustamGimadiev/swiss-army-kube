@@ -22,7 +22,7 @@ module "network" {
   cluster_name       = local.cluster_name
   network            = 10
 }
-#
+
 module "kubernetes" {
   depends_on = [module.network]
   source     = "../../modules/kubernetes"
@@ -33,8 +33,6 @@ module "kubernetes" {
   cluster_name       = local.cluster_name
   vpc_id             = module.network.vpc_id
   subnets            = module.network.private_subnets
-
-  on_demand_gpu_instance_type = ["g4dn.xlarge"]
 }
 
 module "argocd" {
@@ -45,15 +43,7 @@ module "argocd" {
   owner        = var.argocd.owner
   repository   = var.argocd.repository
   cluster_name = module.kubernetes.cluster_name
-  path_prefix  = "examples/argocd-with-applications/"
+  path_prefix  = "examples/argocd/"
 
   domains = local.domain
-  ingress_annotations = {
-    "nginx.ingress.kubernetes.io/ssl-redirect" = "false"
-    "kubernetes.io/ingress.class"              = "nginx"
-  }
-  conf = {
-    "server.service.type"     = "ClusterIP"
-    "server.ingress.paths[0]" = "/"
-  }
 }
