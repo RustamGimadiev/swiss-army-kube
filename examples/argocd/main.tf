@@ -44,6 +44,17 @@ module "argocd" {
   repository   = var.argocd.repository
   cluster_name = module.kubernetes.cluster_name
   path_prefix  = "examples/argocd/"
+}
 
-  domains = local.domain
+module "cert_manager" {
+  module_depends_on = [module.kubernetes]
+  source            = "../../modules/system/cert-manager"
+  cluster_name      = module.kubernetes.cluster_name
+  domains           = local.domain
+  vpc_id            = module.network.vpc_id
+  zone_id           = "*"
+  environment       = local.environment
+  project           = local.project
+  email             = "rgimadiev@provectus.com"
+  argocd            = module.argocd.state
 }
