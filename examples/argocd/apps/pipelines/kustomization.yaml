@@ -6,6 +6,7 @@ bases:
 - https://github.com/kubeflow/manifests.git/pipeline/upstream/base/pipeline?ref=v1.2-branch
 - https://github.com/kubeflow/manifests.git/pipeline/upstream/base/metadata?ref=v1.2-branch
 - https://github.com/kubeflow/manifests.git/pipeline/upstream/base/cache?ref=v1.2-branch
+- https://github.com/kubeflow/manifests.git/pipeline/upstream/base/cache-deployer/cluster-scoped?ref=v1.2-branch
 - https://github.com/kubeflow/manifests.git/pipeline/upstream/base/cache-deployer?ref=v1.2-branch
 configMapGenerator:
 - name: pipeline-install-config
