@@ -68,7 +68,7 @@ patchesJSON6902:
         - name: DBCONFIG_HOST
           value: test
         - name: DBCONFIG_PORT
-          valueF: 9093
+          value: 9093
         - name: OBJECTSTORECONFIG_HOST
           value: s3.amazonaws.com
         - name: OBJECTSTORECONFIG_REGION
