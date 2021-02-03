@@ -43,16 +43,16 @@ patchesJSON6902:
       path: /spec/template/spec/containers/0/env
       value:
         - name: AUTO_UPDATE_PIPELINE_DEFAULT_VERSION
-          value: true
+          value: "true"
         - name: POD_NAMESPACE
           valueFrom:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
         - name: OBJECTSTORECONFIG_SECURE
-          value: true
+          value: "true"
         - name: OBJECTSTORECONFIG_BUCKETNAME
-          value: test
+          value: "test"
         - name: DBCONFIG_USER
           valueFrom:
             secretKeyRef:
@@ -64,14 +64,14 @@ patchesJSON6902:
               key: password
               name: mysql-secret
         - name: DBCONFIG_DBNAME
-          value: pipeline
+          value: "pipeline"
         - name: DBCONFIG_HOST
-          value: test
+          value: "test"
         - name: DBCONFIG_PORT
-          value: 9093
+          value: "9093"
         - name: OBJECTSTORECONFIG_HOST
-          value: s3.amazonaws.com
+          value: "s3.amazonaws.com"
         - name: OBJECTSTORECONFIG_REGION
-          value: eu-north-1
+          value: "eu-north-1"
         - name: OBJECTSTORECONFIG_PORT
           value: ""
