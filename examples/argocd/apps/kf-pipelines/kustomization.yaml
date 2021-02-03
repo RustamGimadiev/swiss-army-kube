@@ -15,11 +15,6 @@ configMapGenerator:
     - minioServiceRegion=YOUR_AWS_REGION
     - autoUpdatePipelineDefaultVersion=true
     - cronScheduleTimezone=UTC
-secretGenerator:
-- name: mysql-secret
-  literals: 
-    - username=username
-    - password=password
 generatorOptions:
   disableNameSuffixHash: true
 patchesJSON6902:
