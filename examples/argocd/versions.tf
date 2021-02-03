@@ -32,6 +32,10 @@ terraform {
       source  = "hashicorp/template"
       version = "~> 2.1"
     }
+    kustomization = {
+      source  = "kbst/kustomization"
+      version = ">= 0.3.1"
+    }
   }
   required_version = ">= 0.13"
 }

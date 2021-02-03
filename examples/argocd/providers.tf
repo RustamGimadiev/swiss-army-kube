@@ -17,3 +17,6 @@ provider "helm" {
     load_config_file       = false
   }
 }
+
+provider "kustomization" {
+}
