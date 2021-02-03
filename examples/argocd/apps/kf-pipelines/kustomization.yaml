@@ -13,6 +13,8 @@ configMapGenerator:
     - bucketName=YOUR_S3_BUCKET_NAME
     - minioServiceHost=s3.amazonaws.com
     - minioServiceRegion=YOUR_AWS_REGION
+    - autoUpdatePipelineDefaultVersion=true
+    - cronScheduleTimezone=UTC
 secretGenerator:
 - name: mysql-secret
   literals: 
