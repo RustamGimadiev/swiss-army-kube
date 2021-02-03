@@ -9,7 +9,11 @@ bases:
 configMapGenerator:
 - name: pipeline-install-config
   literals:
+    - cacheDb=cache
+    - pipelineDb=pipeline
+    - mlmdDb=metadata
     - dbHost=YOUR_RDS_ENDPOINT
+    - dbPort=9090
     - bucketName=YOUR_S3_BUCKET_NAME
     - minioServiceHost=s3.amazonaws.com
     - minioServiceRegion=YOUR_AWS_REGION
