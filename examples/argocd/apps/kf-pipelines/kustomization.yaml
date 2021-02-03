@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/application?ref=1.4.0-rc.1
+- https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/pipeline?ref=1.4.0-rc.1
+- https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/metadata?ref=1.4.0-rc.1
+- https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/cache?ref=1.4.0-rc.1
+- https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/cache-deployer?ref=1.4.0-rc.1
+# configMapGenerator:
+# - name: pipeline-install-config
+#   env: params.env
+# secretGenerator:
+# - name: mysql-secret
+#   env: params-db-secret.env
