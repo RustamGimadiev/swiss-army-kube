@@ -33,3 +33,45 @@ patchesJSON6902:
       value:
         - name: ALLOW_CUSTOM_VISUALIZATIONS
           value: "true"
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: ml-pipeline
+  patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/env
+      value:
+        - name: AUTO_UPDATE_PIPELINE_DEFAULT_VERSION
+          value: true
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: OBJECTSTORECONFIG_SECURE
+          value: true
+        - name: OBJECTSTORECONFIG_BUCKETNAME
+          value: test
+        - name: DBCONFIG_USER
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql-secret
+        - name: DBCONFIG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql-secret
+        - name: DBCONFIG_DBNAME
+          value: pipeline
+        - name: DBCONFIG_HOST
+          value: test
+        - name: DBCONFIG_PORT
+          valueF: 9093
+        - name: OBJECTSTORECONFIG_HOST
+          value: s3.amazonaws.com
+        - name: OBJECTSTORECONFIG_REGION
+          value: eu-north-1
+        - name: OBJECTSTORECONFIG_PORT
+          value: ""
