@@ -2,10 +2,10 @@ apiVersion: "argoproj.io/v1alpha1"
 kind: "Application"
 metadata:
   name: kf-pipelines-cluster-scoped
-  namespace: kubeflow
 spec:
   destination:
     server: "https://kubernetes.default.svc"
+    namespace: kubeflow
   project: "default"
   source:
     kustomize: {}

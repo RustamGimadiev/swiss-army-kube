@@ -6,4 +6,9 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
+  name: demo
+---
+apiVersion: v1
+kind: Namespace
+metadata:
   name: kubeflow
