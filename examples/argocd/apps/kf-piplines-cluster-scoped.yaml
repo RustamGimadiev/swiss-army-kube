@@ -1,7 +1,7 @@
 apiVersion: "argoproj.io/v1alpha1"
 kind: "Application"
 metadata:
-  name: kf-piplines-cluster-scoped
+  name: kf-pipelines-cluster-scoped
   namespace: kubeflow
 spec:
   destination:
@@ -10,7 +10,7 @@ spec:
   source:
     kustomize: {}
     repoURL: 'https://github.com/RustamGimadiev/swiss-army-kube'
-    path: examples/argocd/apps/kf-piplines-cluster-scoped
+    path: examples/argocd/apps/kf-pipelines-cluster-scoped
     targetRevision: demo/ltkf
   syncPolicy:
     automated:
