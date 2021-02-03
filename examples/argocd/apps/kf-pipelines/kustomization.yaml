@@ -6,9 +6,16 @@ bases:
 - https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/metadata?ref=1.4.0-rc.1
 - https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/cache?ref=1.4.0-rc.1
 - https://github.com/kubeflow/pipelines.git/manifests/kustomize/base/cache-deployer?ref=1.4.0-rc.1
-# configMapGenerator:
-# - name: pipeline-install-config
-#   env: params.env
-# secretGenerator:
-# - name: mysql-secret
-#   env: params-db-secret.env
+configMapGenerator:
+- name: pipeline-install-config
+  literals:
+    - dbHost=YOUR_RDS_ENDPOINT
+    - bucketName=YOUR_S3_BUCKET_NAME
+    - minioServiceHost=s3.amazonaws.com
+    - minioServiceRegion=YOUR_AWS_REGION
+secretGenerator:
+- name: mysql-secret
+  literals: 
+    - test=test
+generatorOptions:
+  disableNameSuffixHash: true
