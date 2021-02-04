@@ -36,6 +36,10 @@ terraform {
       source  = "kbst/kustomization"
       version = ">= 0.3.1"
     }
+    mysql = {
+      source  = "winebarrel/mysql"
+      version = "1.9.0-p6"
+    }
   }
   required_version = ">= 0.13"
 }

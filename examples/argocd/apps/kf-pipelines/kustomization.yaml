@@ -9,14 +9,14 @@ bases:
 configMapGenerator:
 - name: pipeline-install-config
   literals:
-    - cacheDb=cache
-    - pipelineDb=pipeline
-    - mlmdDb=metadata
-    - dbHost=YOUR_RDS_ENDPOINT
-    - dbPort=9090
+    - cacheDb=kubeflow
+    - pipelineDb=kubeflow
+    - mlmdDb=kubeflow
+    - dbHost=terraform-20210204100140545500000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com
+    - dbPort=3306
     - bucketName=YOUR_S3_BUCKET_NAME
     - minioServiceHost=s3.amazonaws.com
-    - minioServiceRegion=YOUR_AWS_REGION
+    - minioServiceRegion=eu-north-1
     - autoUpdatePipelineDefaultVersion=true
     - cronScheduleTimezone=UTC
 generatorOptions:
@@ -64,11 +64,11 @@ patchesJSON6902:
               key: password
               name: mysql-secret
         - name: DBCONFIG_DBNAME
-          value: "pipeline"
+          value: "kubeflow"
         - name: DBCONFIG_HOST
           value: "test"
         - name: DBCONFIG_PORT
-          value: "9093"
+          value: "3306"
         - name: OBJECTSTORECONFIG_HOST
           value: "s3.amazonaws.com"
         - name: OBJECTSTORECONFIG_REGION
