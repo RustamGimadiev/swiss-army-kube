@@ -32,6 +32,9 @@ patchesJSON6902:
       path: /metadata/annotations
       value:
           eks.amazonaws.com/role-arn: arn:aws:iam::245582572290:role/ltkf_demo
+    - op: add
+      path: /automountServiceAccountToken
+      value: true
 - target:
     group: apps
     version: v1
