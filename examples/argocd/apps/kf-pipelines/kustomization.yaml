@@ -9,9 +9,9 @@ bases:
 configMapGenerator:
 - name: pipeline-install-config
   literals:
-    - cacheDb=kubeflow
-    - pipelineDb=kubeflow
-    - mlmdDb=kubeflow
+    - cacheDb=cache
+    - pipelineDb=pipelines
+    - mlmdDb=metadata
     - dbHost=terraform-20210204100140545500000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com
     - dbPort=3306
     - bucketName=YOUR_S3_BUCKET_NAME
@@ -64,9 +64,9 @@ patchesJSON6902:
               key: password
               name: mysql-secret
         - name: DBCONFIG_DBNAME
-          value: "kubeflow"
+          value: "pipelines"
         - name: DBCONFIG_HOST
-          value: "test"
+          value: "terraform-20210204100140545500000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
         - name: DBCONFIG_PORT
           value: "3306"
         - name: OBJECTSTORECONFIG_HOST
