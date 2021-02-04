@@ -14,7 +14,7 @@ configMapGenerator:
     - mlmdDb=metadata
     - dbHost=terraform-20210204100140545500000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com
     - dbPort=3306
-    - bucketName=YOUR_S3_BUCKET_NAME
+    - bucketName=ltkf
     - minioServiceHost=s3.amazonaws.com
     - minioServiceRegion=eu-north-1
     - autoUpdatePipelineDefaultVersion=true
@@ -52,7 +52,7 @@ patchesJSON6902:
         - name: OBJECTSTORECONFIG_SECURE
           value: "true"
         - name: OBJECTSTORECONFIG_BUCKETNAME
-          value: "test"
+          value: "ltkf"
         - name: DBCONFIG_USER
           valueFrom:
             secretKeyRef:
