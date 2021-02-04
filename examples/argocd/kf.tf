@@ -60,6 +60,57 @@ resource "local_file" "creds" {
     }
   )
 }
+resource "aws_iam_user_policy" "aws_ro" {
+  name = "test"
+  user = aws_iam_user.aws.name
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_user" "aws" {
+  name = "${module.kubernetes.this.cluster_id}_demo"
+}
+
+resource "aws_iam_access_key" "aws" {
+  user = aws_iam_user.aws.name
+}
+
+resource "aws_kms_ciphertext" "a" {
+  key_id    = module.argocd.state.kms_key_id
+  plaintext = base64encode(aws_iam_access_key.aws.secret)
+}
+
+resource "local_file" "aws" {
+  filename = "apps/aws-secret.yaml"
+  content = yamlencode(
+    {
+      apiVersion = "v1"
+      kind       = "Secret"
+      metadata = {
+        name      = "aws-secret"
+        namespace = "demo"
+      }
+      type = "Opaque"
+      data = {
+        accesskey = base64encode(aws_iam_access_key.aws.id)
+        secretkey = "KMS_ENC:${aws_kms_ciphertext.a.ciphertext_blob}:"
+      }
+    }
+  )
+}
 
 output "db" {
   value = aws_db_instance.default.endpoint
