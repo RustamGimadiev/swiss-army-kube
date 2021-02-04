@@ -64,3 +64,18 @@ resource "local_file" "creds" {
 output "db" {
   value = aws_db_instance.default.endpoint
 }
+
+module "iam_role" {
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+  version                       = "~> v3.6.0"
+  create_role                   = true
+  role_name                     = "${module.kubernetes.this.cluster_id}_demo"
+  provider_url                  = replace(module.kubernetes.this.cluster_oidc_issuer_url, "https://", "")
+  role_policy_arns              = ["arn:aws:iam::aws:policy/AmazonS3FullAccess"]
+  oidc_fully_qualified_subjects = ["system:serviceaccount:demo:*"]
+}
+
+output "role" {
+  value = module.iam_role.this_iam_role_arn
+}
+

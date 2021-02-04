@@ -23,6 +23,16 @@ generatorOptions:
   disableNameSuffixHash: true
 patchesJSON6902:
 - target:
+    group: ""
+    version: v1
+    kind: ServiceAccount
+    name: ml-pipeline
+  patch: |-
+    - op: add
+      path: /metadata/annotations
+      value:
+          eks.amazonaws.com/role-arn: arn:aws:iam::245582572290:role/ltkf_demo
+- target:
     group: apps
     version: v1
     kind: Deployment
