@@ -3,10 +3,6 @@
 "metadata":
   "name": "kubeflow"
   "namespace": "kubeflow"
-apiVersion: kfdef.apps.kubeflow.org/v1
-kind: KfDef
-metadata:
-  namespace: kubeflow
 spec:
   applications:
   - kustomizeConfig:
