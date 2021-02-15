@@ -1,0 +1,25 @@
+"apiVersion": "argoproj.io/v1alpha1"
+"kind": "Application"
+"metadata":
+  "finalizers":
+  - "resources-finalizer.argocd.argoproj.io"
+  "name": "kubeflow-namespaces"
+  "namespace": "argocd"
+"spec":
+  "destination":
+    "namespace": "kubeflow"
+    "server": "https://kubernetes.default.svc"
+  "ignoreDifferences":
+  - "group": "app.k8s.io"
+    "jsonPointers":
+    - "/spec/descriptor"
+    "kind": "Application"
+  - "group": "rbac.authorization.k8s.io"
+    "jsonPointers":
+    - "/rules"
+    "kind": "ClusterRole"
+  "project": "default"
+  "source":
+    "path": "examples/argocd-with-applications/apps/kubeflow/kustomize/namespaces"
+    "repoURL": "https://github.com/RustamGimadiev/swiss-army-kube"
+    "targetRevision": "env/persistence"
