@@ -86,7 +86,7 @@ spec:
           value: system
       repoRef:
         name: manifests
-        path: manifests/pipeline/upstream/env/aws
+        path: pipeline/upstream/env/aws
     name: kubeflow-aws
   repos:
   - name: manifests
