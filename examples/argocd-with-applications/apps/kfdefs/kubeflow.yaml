@@ -1,221 +1,216 @@
-apiVersion: kfdef.apps.kubeflow.org/v1
-kind: KfDef
-metadata:
-  name: kubeflow
-  namespace: kubeflow
-spec:
-  applications:
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: istio-system
-      repoRef:
-        name: manifests
-        path: istio/istio-crds
-    name: istio-crds
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: istio-system
-      repoRef:
-        name: manifests
-        path: istio/istio-install
-    name: istio-install
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: istio-system
-      repoRef:
-        name: manifests
-        path: istio/cluster-local-gateway
-    name: cluster-local-gateway
-  - kustomizeConfig:
-      parameters:
-      - name: clusterRbacConfig
-        value: 'OFF'
-      repoRef:
-        name: manifests
-        path: istio/istio
-    name: istio
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: istio-system
-      repoRef:
-        name: manifests
-        path: istio/add-anonymous-user-filter
-    name: add-anonymous-user-filter
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: cert-manager
-      repoRef:
-        name: manifests
-        path: cert-manager/cert-manager-crds
-    name: cert-manager-crds
-  - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: kube-system
-      repoRef:
-        name: manifests
-        path: cert-manager/cert-manager-kube-system-resources
-    name: cert-manager-kube-system-resources
-  - kustomizeConfig:
-      overlays:
-      - self-signed
-      parameters:
-      - name: namespace
-        value: cert-manager
-      repoRef:
-        name: manifests
-        path: cert-manager/cert-manager
-    name: cert-manager
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: metacontroller
-    name: metacontroller
-  - kustomizeConfig:
-      overlays:
-      - istio
-      repoRef:
-        name: manifests
-        path: argo
-    name: argo
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: kubeflow-roles
-    name: kubeflow-roles
-  - kustomizeConfig:
-      overlays:
-      - istio
-      repoRef:
-        name: manifests
-        path: common/centraldashboard
-    name: centraldashboard
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: admission-webhook/bootstrap
-    name: bootstrap
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: admission-webhook/webhook
-    name: webhook
-  - kustomizeConfig:
-      overlays:
-      - istio
-      parameters:
-      - name: userid-header
-        value: kubeflow-userid
-      repoRef:
-        name: manifests
-        path: jupyter/jupyter-web-app
-    name: jupyter-web-app
-  - kustomizeConfig:
-      parameters:
-      - name: MYSQL_HOST
-        value: external_host
-      - name: MYSQL_DATABASE
-        value: metadb
-      - name: MYSQL_PORT
-        value: "3306"
-      - name: MYSQL_ALLOW_EMPTY_PASSWORD
-        value: "true"
-      overlays:
-      - istio
-      - external-mysql
-      repoRef:
-        name: manifests
-        path: metadata
-    name: metadata
-  - kustomizeConfig:
-      overlays:
-      - istio
-      repoRef:
-        name: manifests
-        path: jupyter/notebook-controller
-    name: notebook-controller
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pytorch-job/pytorch-job-crds
-    name: pytorch-job-crds
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pytorch-job/pytorch-operator
-    name: pytorch-operator
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: tf-training/tf-job-crds
-    name: tf-job-crds
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: tf-training/tf-job-operator
-    name: tf-job-operator
-  - kustomizeConfig:
-      parameters:
-      - name: mysqlHost
-        value: XXXXXXXXXXXXX
-      - name: mysqlUser
-        value: XXXXXXXXXXXXX
-      - name: mysqlPassword
-        value: XXXXXXXXXXXXX
-      overlays:
-      - external-mysql
-      repoRef:
-        name: manifests
-        path: pipeline/api-service
-    name: api-service
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pipeline/persistent-agent
-    name: persistent-agent
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pipeline/pipelines-runner
-    name: pipelines-runner
-  - kustomizeConfig:
-      overlays:
-      - istio
-      repoRef:
-        name: manifests
-        path: pipeline/pipelines-ui
-    name: pipelines-ui
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pipeline/pipelines-viewer
-    name: pipelines-viewer
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pipeline/scheduledworkflow
-    name: scheduledworkflow
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: pipeline/pipeline-visualization-service
-    name: pipeline-visualization-service
-  - kustomizeConfig:
-      overlays:
-      - istio
-      parameters:
-      - name: admin
-        value: johnDoe@acme.com
-      repoRef:
-        name: manifests
-        path: profiles
-    name: profiles
-  repos:
-  - name: manifests
-    uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
-  version: v1.2-branch
+"apiVersion": "kfdef.apps.kubeflow.org/v1"
+"kind": "KfDef"
+"metadata":
+  "name": "kubeflow"
+  "namespace": "kubeflow"
+"spec":
+  "applications":
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "istio-system"
+      "repoRef":
+        "name": "manifests"
+        "path": "istio/istio-crds"
+    "name": "istio-crds"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "istio-system"
+      "repoRef":
+        "name": "manifests"
+        "path": "istio/istio-install"
+    "name": "istio-install"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "istio-system"
+      "repoRef":
+        "name": "manifests"
+        "path": "istio/cluster-local-gateway"
+    "name": "cluster-local-gateway"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "clusterRbacConfig"
+        "value": "OFF"
+      "repoRef":
+        "name": "manifests"
+        "path": "istio/istio"
+    "name": "istio"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "istio-system"
+      "repoRef":
+        "name": "manifests"
+        "path": "istio/add-anonymous-user-filter"
+    "name": "add-anonymous-user-filter"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "cert-manager"
+      "repoRef":
+        "name": "manifests"
+        "path": "cert-manager/cert-manager-crds"
+    "name": "cert-manager-crds"
+  - "kustomizeConfig":
+      "parameters":
+      - "name": "namespace"
+        "value": "kube-system"
+      "repoRef":
+        "name": "manifests"
+        "path": "cert-manager/cert-manager-kube-system-resources"
+    "name": "cert-manager-kube-system-resources"
+  - "kustomizeConfig":
+      "overlays":
+      - "self-signed"
+      "parameters":
+      - "name": "namespace"
+        "value": "cert-manager"
+      "repoRef":
+        "name": "manifests"
+        "path": "cert-manager/cert-manager"
+    "name": "cert-manager"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "metacontroller"
+    "name": "metacontroller"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      "repoRef":
+        "name": "manifests"
+        "path": "argo"
+    "name": "argo"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "kubeflow-roles"
+    "name": "kubeflow-roles"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      "repoRef":
+        "name": "manifests"
+        "path": "common/centraldashboard"
+    "name": "centraldashboard"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "admission-webhook/bootstrap"
+    "name": "bootstrap"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "admission-webhook/webhook"
+    "name": "webhook"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      "parameters":
+      - "name": "userid-header"
+        "value": "kubeflow-userid"
+      "repoRef":
+        "name": "manifests"
+        "path": "jupyter/jupyter-web-app"
+    "name": "jupyter-web-app"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      - "external-mysql"
+      "parameters":
+      - "name": "MYSQL_HOST"
+        "value": "terraform-20210215105805856000000002.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
+      - "name": "MYSQL_DATABASE"
+        "value": "metadb"
+      - "name": "MYSQL_PORT"
+        "value": "3306"
+      - "name": "MYSQL_ALLOW_EMPTY_PASSWORD"
+        "value": "true"
+      "repoRef":
+        "name": "manifests"
+        "path": "metadata"
+      "secrets":
+      - "name": "MYSQL_USERNAME"
+        "value": "rootuser"
+      - "name": "MYSQ_PASSWORD"
+        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
+    "name": "metadata"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      "repoRef":
+        "name": "manifests"
+        "path": "jupyter/notebook-controller"
+    "name": "notebook-controller"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pytorch-job/pytorch-job-crds"
+    "name": "pytorch-job-crds"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pytorch-job/pytorch-operator"
+    "name": "pytorch-operator"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "tf-training/tf-job-crds"
+    "name": "tf-job-crds"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "tf-training/tf-job-operator"
+    "name": "tf-job-operator"
+  - "kustomizeConfig":
+      "overlays":
+      - "external-mysql"
+      "parameters":
+      - "name": "mysqlHost"
+        "value": "terraform-20210215105805856000000002.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
+      - "name": "mysqlUser"
+        "value": "rootuser"
+      - "name": "mysqlPassword"
+        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/api-service"
+    "name": "api-service"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/persistent-agent"
+    "name": "persistent-agent"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/pipelines-runner"
+    "name": "pipelines-runner"
+  - "kustomizeConfig":
+      "overlays":
+      - "istio"
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/pipelines-ui"
+    "name": "pipelines-ui"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/pipelines-viewer"
+    "name": "pipelines-viewer"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/scheduledworkflow"
+    "name": "scheduledworkflow"
+  - "kustomizeConfig":
+      "repoRef":
+        "name": "manifests"
+        "path": "pipeline/pipeline-visualization-service"
+    "name": "pipeline-visualization-service"
+  "repos":
+  - "name": "manifests"
+    "uri": "https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz"
+  "version": "v1.2-branch"
