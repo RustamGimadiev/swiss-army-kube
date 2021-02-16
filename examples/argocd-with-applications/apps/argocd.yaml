@@ -12,9 +12,8 @@
     "chart": "argo-cd"
     "helm":
       "parameters":
-      - "name": "server.config"
-        "value": |
-          kustomize.buildOptions: --load_restrictor none
+      - "name": "server.config.kustomize.buildOptions"
+        "value" "--load_restrictor none"
       - "name": "server.rbacConfig.policy\\.csv"
         "value": |
           g, administrators, role:admin
