@@ -10,8 +10,8 @@
   "project": "default"
   "source":
     "kustomize":
-      "images":
-      - "aipipeline/kubeflow-operator=provectuslabs/kubeflow-operator:master"
+      # "images":
+      # - "aipipeline/kubeflow-operator=provectuslabs/kubeflow-operator:master"
     "path": "deploy"
     "repoURL": "https://github.com/kubeflow/kfctl"
     "targetRevision": "v1.2-branch"
