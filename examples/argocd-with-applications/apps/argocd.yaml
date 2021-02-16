@@ -13,7 +13,7 @@
     "helm":
       "parameters":
       - "name": "server.config.kustomize.buildOptions"
-        "value" "--load_restrictor none"
+        "value": "--load_restrictor none"
       - "name": "server.rbacConfig.policy\\.csv"
         "value": |
           g, administrators, role:admin
