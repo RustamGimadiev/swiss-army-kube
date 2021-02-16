@@ -121,7 +121,7 @@
       - "external-mysql"
       "parameters":
       - "name": "MYSQL_HOST"
-        "value": "terraform-20210215105805856000000002.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
+        "value": "terraform-20210216172048257900000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
       - "name": "MYSQL_DATABASE"
         "value": "metadb"
       - "name": "MYSQL_PORT"
@@ -129,9 +129,9 @@
       - "name": "MYSQL_ALLOW_EMPTY_PASSWORD"
         "value": "true"
       - "name": "MYSQL_USERNAME"
-        "value": "rootuser"
+        "value": "root"
       - "name": "MYSQL_PASSWORD"
-        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
+        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHR+SHo5bfDMmBjkr5Luj99AAAAezB5BgkqhkiG9w0BBwagbDBqAgEAMGUGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM6sOQXX31sIa/6QucAgEQgDiuagPuPJ52RlecHJ8pv2KnFDe+hldqZAPATXvT7yMyb32PF53Wl+NM1+rgS/9gSWRDWD2W7Q02FQ==:"
       "repoRef":
         "name": "manifests"
         "path": "metadata"
@@ -168,11 +168,11 @@
       - "external-mysql"
       "parameters":
       - "name": "mysqlHost"
-        "value": "terraform-20210215105805856000000002.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
+        "value": "terraform-20210216172048257900000001.c5o3tz4cxjlj.eu-north-1.rds.amazonaws.com"
       - "name": "mysqlUser"
-        "value": "rootuser"
+        "value": "root"
       - "name": "mysqlPassword"
-        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
+        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHR+SHo5bfDMmBjkr5Luj99AAAAezB5BgkqhkiG9w0BBwagbDBqAgEAMGUGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM6sOQXX31sIa/6QucAgEQgDiuagPuPJ52RlecHJ8pv2KnFDe+hldqZAPATXvT7yMyb32PF53Wl+NM1+rgS/9gSWRDWD2W7Q02FQ==:"
       "repoRef":
         "name": "manifests"
         "path": "pipeline/api-service"
