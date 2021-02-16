@@ -12,6 +12,8 @@
     "path": "examples/argocd-with-applications/apps/kfdefs"
     "repoURL": "https://github.com/RustamGimadiev/swiss-army-kube"
     "targetRevision": "env/persistence"
+    "plugin":
+      "name": "decryptor"
   "syncPolicy":
     "automated":
       "prune": true
