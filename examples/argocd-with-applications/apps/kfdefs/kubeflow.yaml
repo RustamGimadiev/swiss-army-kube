@@ -128,14 +128,13 @@
         "value": "3306"
       - "name": "MYSQL_ALLOW_EMPTY_PASSWORD"
         "value": "true"
+      - "name": "MYSQL_USERNAME"
+        "value": "rootuser"
+      - "name": "MYSQL_PASSWORD"
+        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
       "repoRef":
         "name": "manifests"
         "path": "metadata"
-      "secrets":
-      - "name": "MYSQL_USERNAME"
-        "value": "rootuser"
-      - "name": "MYSQ_PASSWORD"
-        "value": "KMS_ENC:AQICAHjfvG704PvnwuG4x1mu4cwOwSb+JaT/MVDHib1FHVH/vgHz8x7ngyblH9U2X58RcntBAAAAaDBmBgkqhkiG9w0BBwagWTBXAgEAMFIGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMZamXCxmye5hiF1/vAgEQgCVpSiQK61vTmuTG5TmmDRfCfewYSDCZ4f+s95dhaOvbrwXXMoTZ:"
     "name": "metadata"
   - "kustomizeConfig":
       "overlays":
