@@ -122,7 +122,7 @@ spec:
       - name: MYSQL_DATABASE
         value: metadb
       - name: MYSQL_PORT
-        value: 3306
+        value: "3306"
       - name: MYSQL_ALLOW_EMPTY_PASSWORD
         value: true
       overlays:
