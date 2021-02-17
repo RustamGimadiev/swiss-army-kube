@@ -89,5 +89,5 @@ spec:
     name: add-anonymous-user-filter
   repos:
   - name: manifests
-    uri: https://github.com/kubeflow/manifests/archive/aws.tar.gz
-  version: v1.2-branch
+    uri: https://github.com/RustamGimadiev/manifests/archive/aws.tar.gz
+  version: v1.2.0
